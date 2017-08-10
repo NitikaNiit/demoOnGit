@@ -1,0 +1,36 @@
+<h2>User Requests</h2>
+<div class="table-reponsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Role</th>
+				<th>Name</th>
+				<th>Mobile</th>
+				<!-- <th>Address</th> -->
+				
+				<th>Status</th>
+				<th></th>
+
+			</tr>
+		</thead>
+		<tr ng-repeat="user in ctrl.users| filter : {status:'N'}">
+		
+			<td>{{user.id}}</td>
+			<td>{{user.role}}</td>
+			<td>{{user.name}}</td>
+			<td>{{user.mobile}}</td>
+			<!-- <td>{{user.address}}</td> -->
+			<td>{{user.status}}</td>
+			<td><input type="button" class="btn btn-info" value="Approve" ng-click="ctrl.accept(user.id)">
+				<input type="button" class="btn btn-danger" value="Reject" ng-click="ctrl.reject(user.id)"></td>
+
+
+		</tr>
+		
+		
+	</table>
+	
+</div>
+
+
