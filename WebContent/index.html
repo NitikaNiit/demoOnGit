@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TicTalk</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="app/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="app/assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="app/assets/css/form-elements.css">
+<link rel="stylesheet" href="app/assets/css/style.css">
+<!-- Custom CSS -->
+<link href="app/assets/css/ticTalk.css" rel="stylesheet">
+
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="app/assets/ico/tic.ico">
+<script src="app/assets/js/angular.min.js"></script>
+<script src="app/assets/js/angular-route.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.min.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/app.routes.js"></script>
+
+<script src="app/components/user/UserController.js"></script>
+<script src="app/components/user/UserService.js"></script>
+<script src="app/assets/js/jquery-1.11.1.min.js"></script>
+<script src="app/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="app/assets/js/jquery.backstretch.min.js"></script>
+
+<script src="app/assets/js/scripts.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="UserController as ctrl">
+	<div ng-show="currentUser.id!==undefined">
+		<div ng-include="'mains.html'"></div>
+	</div>
+
+	<div ng-show="currentUser.id==undefined">
+		<!-- Top content -->
+		<div class="top-content">
+			<div class="inner-bg">
+				<!-- <div ng-include="'common.html'"></div> -->
+				<div class="navbar-wrapper">
+					<nav class="navbar navbar-inverse ">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed"
+									data-toggle="collapse" data-target="#navbar"
+									aria-expanded="false" aria-controls="navbar">
+									<!-- <span class="sr-only">Toggle navigation</span>
+               							 <span class="icon-bar"></span>
+               							 <span class="icon-bar"></span>
+               							 <span class="icon-bar"></span> -->
+									<span class="sr-only">Toggle navigation</span> Menu <i
+										class="fa fa-bars"></i>
+								</button>
+
+								<a class="navbar-brand" href="#!/home"><strong>tictalk</strong></a>
+
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="nav navbar-nav">
+									<!-- style="padding-top:25px;" -->
+									<!--  <li class="active"><a href="#">Home</a></li>
+               							 <li><a href="#about">About</a></li>
+                						<li><a class="page-scroll" href="#contact">Contact</a></li> -->
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+									<li><img src="app/assets/img/tic.jpg"></li>
+								</ul>
+								<div class="col-sm-3 col-md-3"></div>
+							</div>
+						</div>
+					</nav>
+
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4 ">
+							<div class="form-box">
+								<div class="description">
+									<p>TicTalk helps you connect and share with the people in
+										your life.</p>
+								</div>
+								<img src="app/assets/img/yahih.png" id="image">
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-box">
+								<div class="form-top">
+									<div class="form-top-left">
+										<h3>Login to our site</h3>
+										<p>Enter username and password to log on:</p>
+									</div>
+									<div class="form-top-right">
+										<i class="fa fa-lock"></i>
+									</div>
+								</div>
+
+								<div class="form-bottom">
+
+									<form role="form" name="loginForm" ng-submit="ctrl.login()"
+										class="login-form">
+
+										<div class="form-group">
+										<div ng-show="ctrl.user.errorMessage">
+											<div 
+												style="padding: 20px; background-color: #f44336; color: white;">
+												{{ctrl.user.errorMessage}}</div></div>
+											<label class="sr-only" for="id">Username</label> <input
+												type="text" ng-model="ctrl.user.id" name="id"
+												placeholder="Username..." class="form-username form-control"
+												id="id">
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="password">Password</label> <input
+												type="password" ng-model="ctrl.user.password"
+												name="password" placeholder="Password..."
+												class="form-password form-control" id="password">
+										</div>
+										<button type="submit" class="btn">Sign in!</button>
+									</form>
+								</div>
+							</div>
+							<!-- 
+						 <div class="social-login">
+	                        	<h3>...or login with:</h3>
+	                        	<div class="social-login-buttons">
+		                        	<a class="btn btn-link-2" href="#">
+		                        		<i class="fa fa-facebook"></i> Facebook
+		                        	</a>
+		                        	<a class="btn btn-link-2" href="#">
+		                        		<i class="fa fa-twitter"></i> Twitter
+		                        	</a>
+		                        	<a class="btn btn-link-2" href="#">
+		                        		<i class="fa fa-google-plus"></i> Google Plus
+		                        	</a>
+	                        	</div>
+	                        </div> -->
+
+						</div>
+
+						<!-- <div class="col-sm-1 middle-border"></div>  -->
+						<!--  <div class="col-sm-1"></div> -->
+
+						<div class="col-sm-4">
+							<div class="form-box">
+								<div class="form-top">
+									<div class="form-top-left">
+										<h3>Create a new account</h3>
+										<p>It's free &amp always will be!</p>
+									</div>
+									<div class="form-top-right">
+										<i class="fa fa-pencil"></i>
+									</div>
+								</div>
+								<div class="form-bottom">
+
+									<form role="form" name="myForm" ng-submit="ctrl.submit()"
+										class="registration-form">
+										<label>Register As..</label>
+										<div class="form-group">
+											<label style="" class="radio-inline"> <input
+												type="radio" name="role" value="student"
+												ng-model="ctrl.user.role"> Student
+											</label> <label class="radio-inline"> <input type="radio"
+												name="role" value="alumni" ng-model="ctrl.user.role">
+												Alumni
+											</label> <label class="radio-inline"> <input type="radio"
+												name="role" value="employee" ng-model="ctrl.user.role">
+												Employee
+											</label>
+										 <label class="radio-inline"> <input type="radio"
+												name="role" value="admin" ng-model="ctrl.user.role">
+												Admin
+											</label>
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="id">ID </label> <input
+												type="text" ng-model="ctrl.user.id"
+												placeholder="Choose you username" class="form-control"
+												id="id" ng-minlength="3">
+										</div>
+
+										<div class="form-group">
+											<label class="sr-only" for="uname">Name</label> <input
+												type="text" ng-model="ctrl.user.name" id="name"
+												placeholder="First name & surname" class=" form-control"
+												ng-minlength="3">
+										</div>
+
+										<div class="form-group">
+											<label class="sr-only" for="password">Password</label> <input
+												type="password" ng-model="ctrl.user.password"
+												placeholder="Create a password" class="form-control"
+												id="password" ng-minlength="3">
+										</div>
+
+										<div class="form-group">
+											<label class="sr-only" for="mobile">Mobile</label> <input
+												type="text" ng-model="ctrl.user.mobile"
+												placeholder="Mobile phone" class="form-control" id="mobile">
+										</div>
+
+										<div class="form-group">
+											<label class="sr-only" for="address">Address</label>
+											<textarea ng-model="ctrl.user.address"
+												placeholder="Your current address" class="form-control"
+												id="address"></textarea>
+										</div>
+
+										<!-- <button type="button" ng-click="ctrl.reset()"
+									class="btn btn-warning btn-sm">Reset Form</button> -->
+										<button type="submit" class="btn">Sign me up!</button>
+									</form>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<div class="row">
+
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="footer-border"></div>
+						<p>
+							Made by Nitika Khanna at <a href=" target="_blank"><strong>NIIT</strong></a>
+							. <i class="fa fa-smile-o"></i>
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+
+
+
+	<!-- Javascript -->
+
+
+
+	<!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+</body>
+
+</html>
